@@ -1,7 +1,10 @@
 #!/bin/bash
 
-echo Loading scripts for enumerating 445...
+echo -n "IP: "
+read IP
 
-nmap -v4 -p 445 --script=smb* --script-args=unsafe=1 [IP] -T5 -d | tee smb_scan_sh.txt
+echo NSE scripts for 445...
 
-echo Finished
+nmap -v4 -p 445 --script=smb* --script-args=unsafe=1 "$IP" -T5 -d | tee "$IP"_445_nseScan.txt
+
+echo Finished...
